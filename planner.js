@@ -38,7 +38,7 @@ function calculateAdaptivePlan(activities, events, exams) {
 
     // 3. Stima Ore Studio Necessarie (con Memoria delle Abitudini)
     const totalExamCFU = exams.reduce((sum, e) => sum + (Number(e.cfu) || 6), 0);
-    const baseStudyHoursPerCFU = 18; // Media di riferimento per Odontoiatria
+    const baseStudyHoursPerCFU = 18; // Media di riferimento per logopedia
     
     // Calcola il Fattore di Rendimento dell'Utente (Memoria Storica)
     const userEfficiencyFactor = computeUserStudyEfficiency(activities);
