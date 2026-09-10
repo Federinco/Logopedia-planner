@@ -26,7 +26,7 @@
     <section id="homePage" class="page active">
 
         <header class="top-header">
-            <div class="app-title">Logopedia</div>
+            <div class="app-title">🦊 Logopedia</div>
             <div class="app-subtitle">Planner</div>
         </header>
 
@@ -53,28 +53,21 @@
                     d="M 139.7 247.6 A 100 100 0 1 1 260.3 247.6"
                 />
 
-                <!-- =================================================
-                     ANELLO ESTERNO
-                     PERCORSO TOTALE
-                ================================================== -->
-
+                <!-- ANELLO ESTERNO -->
                 <path
                     class="ring-track"
                     d="M 91.6 280.1 A 160 160 0 1 1 308.4 280.1"
                 />
-
                 <path
                     id="internshipOutline"
                     class="ring-outline internship-outline"
                     d="M 91.6 280.1 A 160 160 0 1 1 308.4 280.1"
                 />
-
                 <path
                     id="internshipProgress"
                     class="ring-progress internship-progress"
                     d="M 91.6 280.1 A 160 160 0 1 1 308.4 280.1"
                 />
-
                 <circle
                     id="internshipDot"
                     class="start-dot internship-dot"
@@ -82,40 +75,27 @@
                     cy="280.1"
                     r="5"
                 />
-
                 <text class="ring-label">
-                    <textPath
-                        href="#outerTextPath"
-                        startOffset="50%"
-                        text-anchor="middle"
-                    >
+                    <textPath href="#outerTextPath" startOffset="50%" text-anchor="middle">
                         TIROCINIO
                     </textPath>
                 </text>
 
-
-                <!-- =================================================
-                     ANELLO CENTRALE
-                     TIROCINIO SETTIMANALE
-                ================================================== -->
-
+                <!-- ANELLO CENTRALE -->
                 <path
                     class="ring-track"
                     d="M 115.6 263.9 A 130 130 0 1 1 284.4 263.9"
                 />
-
                 <path
                     id="weeklyInternshipOutline"
                     class="ring-outline weekly-internship-outline"
                     d="M 115.6 263.9 A 130 130 0 1 1 284.4 263.9"
                 />
-
                 <path
                     id="weeklyInternshipProgress"
                     class="ring-progress weekly-internship-progress"
                     d="M 115.6 263.9 A 130 130 0 1 1 284.4 263.9"
                 />
-
                 <circle
                     id="weeklyInternshipDot"
                     class="start-dot weekly-internship-dot"
@@ -123,40 +103,27 @@
                     cy="263.9"
                     r="5"
                 />
-
                 <text class="ring-label">
-                    <textPath
-                        href="#middleTextPath"
-                        startOffset="50%"
-                        text-anchor="middle"
-                    >
+                    <textPath href="#middleTextPath" startOffset="50%" text-anchor="middle">
                         TIROCINIO SETTIMANA
                     </textPath>
                 </text>
 
-
-                <!-- =================================================
-                     ANELLO INTERNO
-                     STUDIO SETTIMANALE
-                ================================================== -->
-
+                <!-- ANELLO INTERNO -->
                 <path
                     class="ring-track"
                     d="M 139.7 247.6 A 100 100 0 1 1 260.3 247.6"
                 />
-
                 <path
                     id="weeklyStudyOutline"
                     class="ring-outline weekly-study-outline"
                     d="M 139.7 247.6 A 100 100 0 1 1 260.3 247.6"
                 />
-
                 <path
                     id="weeklyStudyProgress"
                     class="ring-progress weekly-study-progress"
                     d="M 139.7 247.6 A 100 100 0 1 1 260.3 247.6"
                 />
-
                 <circle
                     id="weeklyStudyDot"
                     class="start-dot weekly-study-dot"
@@ -164,62 +131,20 @@
                     cy="247.6"
                     r="5"
                 />
-
                 <text class="ring-label">
-                    <textPath
-                        href="#innerTextPath"
-                        startOffset="50%"
-                        text-anchor="middle"
-                    >
+                    <textPath href="#innerTextPath" startOffset="50%" text-anchor="middle">
                         STUDIO SETTIMANA
                     </textPath>
                 </text>
 
-
-                <!-- =================================================
-                     CENTRO
-                ================================================== -->
-
+                <!-- CENTRO -->
                 <g class="center-content">
-
-                    <text
-                        id="remainingHours"
-                        class="center-number"
-                        x="200"
-                        y="182"
-                    >
-                        905
-                    </text>
-
-                    <text
-                        class="center-unit"
-                        x="200"
-                        y="202"
-                    >
-                        ORE RIMANENTI
-                    </text>
-
-                    <g
-                        id="statusGroup"
-                        transform="translate(200, 226)"
-                    >
-                        <circle
-                            id="pacingDot"
-                            class="center-status-dot status-on-track"
-                            cx="-42"
-                            cy="0"
-                        />
-
-                        <text
-                            id="pacingText"
-                            class="center-status-text status-on-track"
-                            x="-32"
-                            y="1"
-                        >
-                            In pari
-                        </text>
+                    <text id="remainingHours" class="center-number" x="200" y="182">905</text>
+                    <text class="center-unit" x="200" y="202">ORE RIMANENTI</text>
+                    <g id="statusGroup" transform="translate(200, 226)">
+                        <circle id="pacingDot" class="center-status-dot status-on-track" cx="-42" cy="0"/>
+                        <text id="pacingText" class="center-status-text status-on-track" x="-32" y="1">In pari</text>
                     </g>
-
                 </g>
 
             </svg>
@@ -257,10 +182,7 @@
 
         <div id="calendarGrid" class="calendar-grid"></div>
 
-        <button
-            id="addActivityButton"
-            class="primary-button"
-        >
+        <button id="addActivityButton" class="primary-button">
             + Registra Ore / Attività
         </button>
 
@@ -274,70 +196,71 @@
     <section id="calendarPage" class="page">
 
         <header class="page-header">
-            <h1>Libretto</h1>
+            <h1>Libretto & Laurea</h1>
         </header>
 
         <div class="stats-grid">
-
             <div class="stat-card">
-                <div
-                    id="weightedAverage"
-                    class="stat-value"
-                >
-                    --
-                </div>
-
-                <div class="stat-label">
-                    Media Ponderata
-                </div>
+                <div id="weightedAverage" class="stat-value">--</div>
+                <div class="stat-label">Media Ponderata</div>
             </div>
-
             <div class="stat-card">
-                <div
-                    id="totalCFU"
-                    class="stat-value"
-                >
-                    0
-                </div>
-
-                <div class="stat-label">
-                    CFU Acquisiti
-                </div>
+                <div id="totalCFU" class="stat-value">0</div>
+                <div class="stat-label">CFU Acquisiti</div>
             </div>
-
         </div>
 
-
-        <div class="section-title">
-            Esami in Programma e Superati
+        <!-- SIMULATORE LAUREA -->
+        <div class="settings-card">
+            <div class="activity-card-title" style="margin-bottom: 10px;">Simulatore Voto di Laurea</div>
+            <p class="activity-card-info" style="margin-bottom: 8px;">Base di partenza (su 110): <strong id="laureaBaseVal" style="color:#fff;">0</strong></p>
+            <label>
+                Punti Bonus Tesi: <span id="laureaBonusVal" style="color:#fff;">5</span>
+                <input type="range" id="laureaBonusRange" min="0" max="10" value="5" step="1" style="width:100%; margin-top:6px;">
+            </label>
+            <div style="margin-top: 10px; font-size: 15px; font-weight: 600; color: #30d158;">
+                Proiezione Finale: <span id="laureaFinalVal">0</span> / 110
+            </div>
         </div>
 
-        <div
-            id="examsList"
-            class="activities-list"
-        ></div>
+        <!-- TIMER STUDIO POMODORO MODIFICABILE -->
+        <div class="settings-card" style="text-align: center;">
+            <div class="activity-card-title" style="margin-bottom: 5px;">Timer Studio & Pomodoro</div>
+            
+            <!-- Display del timer e input minuti rapido integrati -->
+            <div style="margin: 10px 0; display: flex; justify-content: center; align-items: center; gap: 10px;">
+                <div id="timerDisplay" style="font-size: 2.2rem; font-weight: bold; color: #fff; cursor: pointer;" title="Clicca per impostare i minuti">25:00</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <label style="color: #8e8e93; font-size: 12px;">Durata minuti:
+                    <input type="number" id="timerMinutesInput" value="25" min="1" max="180" style="width: 80px; display: inline-block; margin-left: 6px; padding: 6px; border-radius: 8px; background: #2c2c2e; color: #fff; border: none; text-align: center;">
+                </label>
+            </div>
 
-        <button
-            id="addExamButton"
-            class="primary-button"
-        >
+            <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+                <button id="timerStartBtn" class="primary-button" style="padding: 10px; font-size: 14px;">Avvia</button>
+                <button id="timerFreeBtn" class="secondary-button" style="padding: 10px; font-size: 14px; background:#2c2c2e;">Libero</button>
+                <button id="timerStopBtn" class="secondary-button" style="padding: 10px; font-size: 14px; color:#ff453a;" disabled>Salva</button>
+            </div>
+            <label style="text-align: left;">
+                Associa a esame
+                <select id="timerExamSelect" style="width:100%; margin-top:6px; padding:10px; border-radius:10px; background:#2c2c2e; color:#fff; border:none;">
+                    <option value="">Studio generale</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="section-title">Esami in Programma e Superati</div>
+        <div id="examsList" class="activities-list"></div>
+
+        <button id="addExamButton" class="primary-button">
             + Aggiungi Esame / CFU
         </button>
 
+        <div class="section-title">Rientri a Casa / Vacanze</div>
+        <div id="eventsList" class="activities-list"></div>
 
-        <div class="section-title">
-            Rientri a Casa / Vacanze
-        </div>
-
-        <div
-            id="eventsList"
-            class="activities-list"
-        ></div>
-
-        <button
-            id="addEventButton"
-            class="primary-button"
-        >
+        <button id="addEventButton" class="primary-button">
             + Aggiungi Rientro / Vacanza
         </button>
 
@@ -354,100 +277,59 @@
             <h1>Altro</h1>
         </header>
 
+        <!-- DIARIO CLINICO ANONIMIZZATO -->
+        <div class="settings-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <div class="activity-card-title">Diario Clinico</div>
+                <button id="addClinicButton" class="primary-button" style="width:auto; padding:6px 12px; font-size:12px;">+ Caso</button>
+            </div>
+            <input type="text" id="searchClinicInput" placeholder="Cerca nel diario clinico..." style="width:100%; padding:10px; border-radius:10px; background:#2c2c2e; color:#fff; border:none; margin-bottom:10px; font-size:14px;">
+            <div id="clinicList" class="activities-list" style="max-height: 200px; overflow-y: auto; margin-bottom:0;"></div>
+        </div>
+
+        <!-- BACKUP & RIPRISTINO JSON -->
+        <div class="settings-card">
+            <div class="activity-card-title" style="margin-bottom: 10px;">Backup e Ripristino Dati</div>
+            <button id="exportJsonBtn" class="primary-button" style="margin-bottom: 8px; font-size: 14px; padding: 12px;">Scarica Backup (JSON)</button>
+            <label class="primary-button" style="display:block; text-align:center; cursor:pointer; background:#2c2c2e; color:#fff; font-size: 14px; padding: 12px; margin-bottom:0;">
+                Ripristina da File JSON
+                <input type="file" id="importJsonInput" accept=".json" style="display:none;">
+            </label>
+        </div>
 
         <div class="activity-card">
-
-            <div class="activity-card-title">
-                Fine percorso tirocinio
-            </div>
-
-            <div
-                id="deadlineInfo"
-                class="activity-card-info"
-            >
-                --
-            </div>
-
+            <div class="activity-card-title">Fine percorso tirocinio</div>
+            <div id="deadlineInfo" class="activity-card-info">--</div>
         </div>
-
 
         <div class="activity-card">
-
-            <div class="activity-card-title">
-                Esame finale tirocinio
-            </div>
-
-            <div
-                id="finalExamInfo"
-                class="activity-card-info"
-            >
-                --
-            </div>
-
+            <div class="activity-card-title">Esame finale tirocinio</div>
+            <div id="finalExamInfo" class="activity-card-info">--</div>
         </div>
-
 
         <div class="activity-card">
-
-            <div class="activity-card-title">
-                Stato algoritmo
-            </div>
-
-            <div
-                id="adaptiveStatus"
-                class="activity-card-info"
-            >
-                --
-            </div>
-
+            <div class="activity-card-title">Stato algoritmo</div>
+            <div id="adaptiveStatus" class="activity-card-info">--</div>
         </div>
 
-
-        <div class="section-title">
-            Impostazioni percorso
-        </div>
+        <div class="section-title">Impostazioni percorso</div>
 
         <div class="settings-card">
-
             <label>
                 Data esame finale tirocinio
-
-                <input
-                    type="date"
-                    id="finalExamDate"
-                >
+                <input type="date" id="finalExamDate">
             </label>
-
             <label>
                 Giorni di preparazione prima dell'esame
-
-                <input
-                    type="number"
-                    id="finalExamBuffer"
-                    min="0"
-                    max="90"
-                    step="1"
-                >
+                <input type="number" id="finalExamBuffer" min="0" max="90" step="1">
             </label>
-
-            <button
-                id="saveSettings"
-                class="primary-button"
-            >
+            <button id="saveSettings" class="primary-button">
                 Salva impostazioni
             </button>
-
         </div>
 
-
-        <div class="section-title">
-            Storico Registro Ore
-        </div>
-
-        <div
-            id="activitiesList"
-            class="activities-list"
-        ></div>
+        <div class="section-title">Storico Registro Ore</div>
+        <div id="activitiesList" class="activities-list"></div>
 
     </section>
 
@@ -457,39 +339,22 @@
     ====================================================== -->
 
     <nav class="bottom-nav">
-
-        <button
-            class="nav-button active"
-            data-page="homePage"
-        >
+        <button class="nav-button active" data-page="homePage">
             <span>⌂</span>
             <small>Home</small>
         </button>
-
-        <button
-            class="nav-button"
-            data-page="calendarViewPage"
-        >
+        <button class="nav-button" data-page="calendarViewPage">
             <span>📅</span>
             <small>Calendario</small>
         </button>
-
-        <button
-            class="nav-button"
-            data-page="calendarPage"
-        >
+        <button class="nav-button" data-page="calendarPage">
             <span>🎓</span>
             <small>Libretto</small>
         </button>
-
-        <button
-            class="nav-button"
-            data-page="otherPage"
-        >
+        <button class="nav-button" data-page="otherPage">
             <span>⋯</span>
             <small>Altro</small>
         </button>
-
     </nav>
 
 </main>
@@ -498,291 +363,102 @@
 <!-- =========================================================
      MODALE ATTIVITÀ
 ========================================================== -->
-
-<div
-    id="activityModal"
-    class="modal hidden"
->
-
+<div id="activityModal" class="modal hidden">
     <div class="modal-content">
-
         <h2>Registra attività</h2>
-
         <div class="activity-type">
-
-            <button
-                class="type-button selected"
-                data-type="internship"
-            >
-                Tirocinio
-            </button>
-
-            <button
-                class="type-button"
-                data-type="study"
-            >
-                Studio
-            </button>
-
+            <button class="type-button selected" data-type="internship">Tirocinio</button>
+            <button class="type-button" data-type="study">Studio</button>
         </div>
-
-
-        <label>
-            Data
-
-            <input
-                type="date"
-                id="activityDate"
-            >
-        </label>
-
-
-        <label>
-            Ore
-
-            <input
-                type="number"
-                id="activityHours"
-                min="0.5"
-                max="8"
-                step="0.5"
-                placeholder="Es. 6"
-            >
-        </label>
-
-
+        <label>Data<input type="date" id="activityDate"></label>
+        <label>Ore<input type="number" id="activityHours" min="0.5" max="8" step="0.5" placeholder="Es. 6"></label>
         <label id="studyExamContainer">
-
             Esame associato allo studio
-
-            <select id="studyExam">
-                <option value="">
-                    Studio generale
-                </option>
-            </select>
-
+            <select id="studyExam"><option value="">Studio generale</option></select>
         </label>
-
-
         <div class="modal-buttons">
-
-            <button
-                id="closeModal"
-                class="secondary-button"
-            >
-                Annulla
-            </button>
-
-            <button
-                id="saveActivity"
-                class="primary-button"
-            >
-                Salva
-            </button>
-
+            <button id="closeModal" class="secondary-button">Annulla</button>
+            <button id="saveActivity" class="primary-button">Salva</button>
         </div>
-
     </div>
-
 </div>
 
 
 <!-- =========================================================
      MODALE ESAME
 ========================================================== -->
-
-<div
-    id="examModal"
-    class="modal hidden"
->
-
+<div id="examModal" class="modal hidden">
     <div class="modal-content">
-
-        <h2 id="examModalTitle">
-            Esame / Materia
-        </h2>
-
-
-        <label>
-            Materia / Nome
-
-            <input
-                type="text"
-                id="examTitle"
-                placeholder="Es. Disturbi della voce"
-            >
-        </label>
-
-
-        <label>
-            Valore CFU
-
-            <input
-                type="number"
-                id="examCFU"
-                min="1"
-                step="1"
-                placeholder="Es. 6"
-            >
-        </label>
-
-
-        <label>
-            Data Esame
-
-            <input
-                type="date"
-                id="examDate"
-            >
-        </label>
-
-
-        <label>
-            Ore di studio stimate
-
-            <input
-                type="number"
-                id="examStudyHours"
-                min="0"
-                step="0.5"
-                placeholder="Es. 45"
-            >
-        </label>
-
-
+        <h2 id="examModalTitle">Esame / Materia</h2>
+        <label>Materia / Nome<input type="text" id="examTitle" placeholder="Es. Disturbi della voce"></label>
+        <label>Valore CFU<input type="number" id="examCFU" min="1" step="1" placeholder="Es. 6"></label>
+        <label>Data Esame<input type="date" id="examDate"></label>
+        <label>Ore di studio stimate<input type="number" id="examStudyHours" min="0" step="0.5" placeholder="Es. 45"></label>
         <label>
             Stato Esame
-
             <select id="examStatus">
-
-                <option value="planned">
-                    In Programma
-                </option>
-
-                <option value="passed">
-                    Superato
-                </option>
-
+                <option value="planned">In Programma</option>
+                <option value="passed">Superato</option>
             </select>
-
         </label>
-
-
-        <label
-            id="gradeContainer"
-            style="display:none;"
-        >
-            Voto Conseguito
-
-            <input
-                type="number"
-                id="examGrade"
-                min="18"
-                max="30"
-                step="1"
-                placeholder="Es. 28"
-            >
+        <label id="gradeContainer" style="display:none;">
+            Voto Conseguito<input type="number" id="examGrade" min="18" max="30" step="1" placeholder="Es. 28">
         </label>
-
-
         <div class="modal-buttons">
-
-            <button
-                id="closeExamModal"
-                class="secondary-button"
-            >
-                Annulla
-            </button>
-
-            <button
-                id="saveExam"
-                class="primary-button"
-            >
-                Salva
-            </button>
-
+            <button id="closeExamModal" class="secondary-button">Annulla</button>
+            <button id="saveExam" class="primary-button">Salva</button>
         </div>
-
     </div>
-
 </div>
 
 
 <!-- =========================================================
      MODALE EVENTO
 ========================================================== -->
-
-<div
-    id="eventModal"
-    class="modal hidden"
->
-
+<div id="eventModal" class="modal hidden">
     <div class="modal-content">
-
         <h2>Rientro / Vacanza</h2>
-
-
         <div class="activity-type">
-
-            <button
-                class="event-type-btn type-button selected"
-                data-eventtype="home"
-            >
-                Rientro
-            </button>
-
-            <button
-                class="event-type-btn type-button"
-                data-eventtype="vacation"
-            >
-                Vacanza
-            </button>
-
+            <button class="event-type-btn type-button selected" data-eventtype="home">Rientro</button>
+            <button class="event-type-btn type-button" data-eventtype="vacation">Vacanza</button>
         </div>
-
-
-        <label>
-            Data Inizio
-
-            <input
-                type="date"
-                id="eventStartDate"
-            >
-        </label>
-
-
-        <label>
-            Data Fine
-
-            <input
-                type="date"
-                id="eventEndDate"
-            >
-        </label>
-
-
+        <label>Data Inizio<input type="date" id="eventStartDate"></label>
+        <label>Data Fine<input type="date" id="eventEndDate"></label>
         <div class="modal-buttons">
-
-            <button
-                id="closeEventModal"
-                class="secondary-button"
-            >
-                Annulla
-            </button>
-
-            <button
-                id="saveEvent"
-                class="primary-button"
-            >
-                Salva
-            </button>
-
+            <button id="closeEventModal" class="secondary-button">Annulla</button>
+            <button id="saveEvent" class="primary-button">Salva</button>
         </div>
-
     </div>
-
 </div>
 
+
+<!-- =========================================================
+     MODALE DIARIO CLINICO
+========================================================== -->
+<div id="clinicModal" class="modal hidden">
+    <div class="modal-content">
+        <h2>Nuova Nota Clinica</h2>
+        <label>Data<input type="date" id="clinicDate"></label>
+        <label>
+            Ambito
+            <select id="clinicAmbito" style="width:100%; margin-top:6px; padding:12px; border-radius:10px; background:#2c2c2e; color:#fff; border:none;">
+                <option value="Età Evolutiva">Età Evolutiva</option>
+                <option value="Voce">Voce</option>
+                <option value="Neurolesioni / Adulti">Neurolesioni / Adulti</option>
+                <option value="Deglutologia">Deglutologia</option>
+                <option value="Audiologia">Audiologia</option>
+            </select>
+        </label>
+        <label>
+            Descrizione (Anonimizzata)
+            <textarea id="clinicDesc" rows="3" placeholder="Note cliniche protette..." style="width:100%; margin-top:6px; padding:12px; border-radius:10px; background:#2c2c2e; color:#fff; border:none; font:inherit;"></textarea>
+        </label>
+        <div class="modal-buttons">
+            <button id="closeClinicModal" class="secondary-button">Annulla</button>
+            <button id="saveClinic" class="primary-button">Salva</button>
+        </div>
+    </div>
+</div>
 
 <script src="app.js"></script>
 
