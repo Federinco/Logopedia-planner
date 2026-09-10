@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    
-    <!-- PWA & iOS Safari Settings -->
+
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Planner">
-    
-    <title>Logopedia Planner</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Icona per iPhone / iOS (Aggiungi a Schermata Home) -->
-<link rel="apple-touch-icon" sizes="180x180" href="icon.png">
+    <meta name="apple-mobile-web-app-title" content="Logopedia Planner">
 
-<!-- Favicon per Browser PC / Safari -->
-<link rel="icon" type="image/png" sizes="32x32" href="icon.png">
+    <title>Logopedia Planner</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icon.png">
 </head>
 
 <body>
 
 <main class="app">
 
-    <!-- HOME -->
+    <!-- =====================================================
+         HOME
+    ====================================================== -->
+
     <section id="homePage" class="page active">
 
         <header class="top-header">
@@ -34,46 +34,192 @@
 
             <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
 
-                <path id="outerTextPath" class="text-guide" d="M 91.6 280.1 A 160 160 0 1 1 308.4 280.1"/>
-                <path id="middleTextPath" class="text-guide" d="M 115.6 263.9 A 130 130 0 1 1 284.4 263.9"/>
-                <path id="innerTextPath" class="text-guide" d="M 139.7 247.6 A 100 100 0 1 1 260.3 247.6"/>
+                <!-- GUIDE PER LE SCRITTE -->
+                <path
+                    id="outerTextPath"
+                    class="text-guide"
+                    d="M 91.6 280.1 A 160 160 0 1 1 308.4 280.1"
+                />
 
-                <!-- ANELLO ESTERNO — TIROCINIO TOTALE -->
-                <path class="ring-track" d="M 91.6 280.1 A 160 160 0 1 1 308.4 280.1"/>
-                <path id="internshipOutline" class="ring-outline internship-outline" d="M 91.6 280.1 A 160 160 0 1 1 308.4 280.1"/>
-                <path id="internshipProgress" class="ring-progress internship-progress" d="M 91.6 280.1 A 160 160 0 1 1 308.4 280.1"/>
-                <circle id="internshipDot" class="start-dot internship-dot" cx="91.6" cy="280.1" r="5"/>
+                <path
+                    id="middleTextPath"
+                    class="text-guide"
+                    d="M 115.6 263.9 A 130 130 0 1 1 284.4 263.9"
+                />
+
+                <path
+                    id="innerTextPath"
+                    class="text-guide"
+                    d="M 139.7 247.6 A 100 100 0 1 1 260.3 247.6"
+                />
+
+                <!-- =================================================
+                     ANELLO ESTERNO
+                     PERCORSO TOTALE
+                ================================================== -->
+
+                <path
+                    class="ring-track"
+                    d="M 91.6 280.1 A 160 160 0 1 1 308.4 280.1"
+                />
+
+                <path
+                    id="internshipOutline"
+                    class="ring-outline internship-outline"
+                    d="M 91.6 280.1 A 160 160 0 1 1 308.4 280.1"
+                />
+
+                <path
+                    id="internshipProgress"
+                    class="ring-progress internship-progress"
+                    d="M 91.6 280.1 A 160 160 0 1 1 308.4 280.1"
+                />
+
+                <circle
+                    id="internshipDot"
+                    class="start-dot internship-dot"
+                    cx="91.6"
+                    cy="280.1"
+                    r="5"
+                />
+
                 <text class="ring-label">
-                    <textPath href="#outerTextPath" startOffset="50%" text-anchor="middle">TIROCINIO</textPath>
+                    <textPath
+                        href="#outerTextPath"
+                        startOffset="50%"
+                        text-anchor="middle"
+                    >
+                        TIROCINIO
+                    </textPath>
                 </text>
 
-                <!-- ANELLO CENTRALE — TIROCINIO SETTIMANA -->
-                <path class="ring-track" d="M 115.6 263.9 A 130 130 0 1 1 284.4 263.9"/>
-                <path id="weeklyInternshipOutline" class="ring-outline weekly-internship-outline" d="M 115.6 263.9 A 130 130 0 1 1 284.4 263.9"/>
-                <path id="weeklyInternshipProgress" class="ring-progress weekly-internship-progress" d="M 115.6 263.9 A 130 130 0 1 1 284.4 263.9"/>
-                <circle id="weeklyInternshipDot" class="start-dot weekly-internship-dot" cx="115.6" cy="263.9" r="5"/>
+
+                <!-- =================================================
+                     ANELLO CENTRALE
+                     TIROCINIO SETTIMANALE
+                ================================================== -->
+
+                <path
+                    class="ring-track"
+                    d="M 115.6 263.9 A 130 130 0 1 1 284.4 263.9"
+                />
+
+                <path
+                    id="weeklyInternshipOutline"
+                    class="ring-outline weekly-internship-outline"
+                    d="M 115.6 263.9 A 130 130 0 1 1 284.4 263.9"
+                />
+
+                <path
+                    id="weeklyInternshipProgress"
+                    class="ring-progress weekly-internship-progress"
+                    d="M 115.6 263.9 A 130 130 0 1 1 284.4 263.9"
+                />
+
+                <circle
+                    id="weeklyInternshipDot"
+                    class="start-dot weekly-internship-dot"
+                    cx="115.6"
+                    cy="263.9"
+                    r="5"
+                />
+
                 <text class="ring-label">
-                    <textPath href="#middleTextPath" startOffset="50%" text-anchor="middle">TIROCINIO SETTIMANA</textPath>
+                    <textPath
+                        href="#middleTextPath"
+                        startOffset="50%"
+                        text-anchor="middle"
+                    >
+                        TIROCINIO SETTIMANA
+                    </textPath>
                 </text>
 
-                <!-- ANELLO INTERNO — STUDIO SETTIMANA -->
-                <path class="ring-track" d="M 139.7 247.6 A 100 100 0 1 1 260.3 247.6"/>
-                <path id="weeklyStudyOutline" class="ring-outline weekly-study-outline" d="M 139.7 247.6 A 100 100 0 1 1 260.3 247.6"/>
-                <path id="weeklyStudyProgress" class="ring-progress weekly-study-progress" d="M 139.7 247.6 A 100 100 0 1 1 260.3 247.6"/>
-                <circle id="weeklyStudyDot" class="start-dot weekly-study-dot" cx="139.7" cy="247.6" r="5"/>
+
+                <!-- =================================================
+                     ANELLO INTERNO
+                     STUDIO SETTIMANALE
+                ================================================== -->
+
+                <path
+                    class="ring-track"
+                    d="M 139.7 247.6 A 100 100 0 1 1 260.3 247.6"
+                />
+
+                <path
+                    id="weeklyStudyOutline"
+                    class="ring-outline weekly-study-outline"
+                    d="M 139.7 247.6 A 100 100 0 1 1 260.3 247.6"
+                />
+
+                <path
+                    id="weeklyStudyProgress"
+                    class="ring-progress weekly-study-progress"
+                    d="M 139.7 247.6 A 100 100 0 1 1 260.3 247.6"
+                />
+
+                <circle
+                    id="weeklyStudyDot"
+                    class="start-dot weekly-study-dot"
+                    cx="139.7"
+                    cy="247.6"
+                    r="5"
+                />
+
                 <text class="ring-label">
-                    <textPath href="#innerTextPath" startOffset="50%" text-anchor="middle">STUDIO SETTIMANA</textPath>
+                    <textPath
+                        href="#innerTextPath"
+                        startOffset="50%"
+                        text-anchor="middle"
+                    >
+                        STUDIO SETTIMANA
+                    </textPath>
                 </text>
 
-                <!-- CENTRO MODIFICATO E INTEGRATO -->
+
+                <!-- =================================================
+                     CENTRO
+                ================================================== -->
+
                 <g class="center-content">
-                    <text id="remainingHours" class="center-number" x="200" y="182">845</text>
-                    <text class="center-unit" x="200" y="202">ORE RIMANENTI</text>
-                    
-                    <g id="statusGroup" transform="translate(200, 226)">
-                        <circle id="pacingDot" class="center-status-dot status-on-track" cx="-42" cy="0"/>
-                        <text id="pacingText" class="center-status-text status-on-track" x="-32" y="1">In pari</text>
+
+                    <text
+                        id="remainingHours"
+                        class="center-number"
+                        x="200"
+                        y="182"
+                    >
+                        905
+                    </text>
+
+                    <text
+                        class="center-unit"
+                        x="200"
+                        y="202"
+                    >
+                        ORE RIMANENTI
+                    </text>
+
+                    <g
+                        id="statusGroup"
+                        transform="translate(200, 226)"
+                    >
+                        <circle
+                            id="pacingDot"
+                            class="center-status-dot status-on-track"
+                            cx="-42"
+                            cy="0"
+                        />
+
+                        <text
+                            id="pacingText"
+                            class="center-status-text status-on-track"
+                            x="-32"
+                            y="1"
+                        >
+                            In pari
+                        </text>
                     </g>
+
                 </g>
 
             </svg>
@@ -82,19 +228,24 @@
 
     </section>
 
-    <!-- CALENDARIO INTERATTIVO -->
+
+    <!-- =====================================================
+         CALENDARIO
+    ====================================================== -->
+
     <section id="calendarViewPage" class="page">
+
         <header class="page-header">
             <h1>Calendario</h1>
         </header>
 
         <div class="calendar-controls">
             <button id="prevMonthBtn">&lt;</button>
-            <h2 id="calendarMonthLabel" style="font-size: 18px;">Mese Anno</h2>
+            <h2 id="calendarMonthLabel">Mese Anno</h2>
             <button id="nextMonthBtn">&gt;</button>
         </div>
 
-        <div class="calendar-grid">
+        <div class="calendar-grid calendar-head">
             <div class="calendar-day-head">Lun</div>
             <div class="calendar-day-head">Mar</div>
             <div class="calendar-day-head">Mer</div>
@@ -103,156 +254,537 @@
             <div class="calendar-day-head">Sab</div>
             <div class="calendar-day-head">Dom</div>
         </div>
+
         <div id="calendarGrid" class="calendar-grid"></div>
 
-        <button id="addActivityButton" class="primary-button">+ Registra Ore / Attività</button>
+        <button
+            id="addActivityButton"
+            class="primary-button"
+        >
+            + Registra Ore / Attività
+        </button>
+
     </section>
 
-    <!-- LIBRETTO & AGENDA -->
+
+    <!-- =====================================================
+         LIBRETTO
+    ====================================================== -->
+
     <section id="calendarPage" class="page">
+
         <header class="page-header">
             <h1>Libretto</h1>
         </header>
 
         <div class="stats-grid">
+
             <div class="stat-card">
-                <div id="weightedAverage" class="stat-value">--</div>
-                <div class="stat-label">Media Ponderata</div>
+                <div
+                    id="weightedAverage"
+                    class="stat-value"
+                >
+                    --
+                </div>
+
+                <div class="stat-label">
+                    Media Ponderata
+                </div>
             </div>
+
             <div class="stat-card">
-                <div id="totalCFU" class="stat-value">0</div>
-                <div class="stat-label">CFU Acquisiti</div>
+                <div
+                    id="totalCFU"
+                    class="stat-value"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    CFU Acquisiti
+                </div>
             </div>
+
         </div>
 
-        <div class="section-title">Esami in Programma e Superati</div>
-        <div id="examsList" class="activities-list"></div>
-        <button id="addExamButton" class="primary-button" style="margin-bottom: 20px;">+ Aggiungi Esame / CFU</button>
 
-        <div class="section-title">Rientri a Casa / Vacanze</div>
-        <div id="eventsList" class="activities-list"></div>
-        <button id="addEventButton" class="primary-button">+ Aggiungi Rientro / Vacanza</button>
+        <div class="section-title">
+            Esami in Programma e Superati
+        </div>
+
+        <div
+            id="examsList"
+            class="activities-list"
+        ></div>
+
+        <button
+            id="addExamButton"
+            class="primary-button"
+        >
+            + Aggiungi Esame / CFU
+        </button>
+
+
+        <div class="section-title">
+            Rientri a Casa / Vacanze
+        </div>
+
+        <div
+            id="eventsList"
+            class="activities-list"
+        ></div>
+
+        <button
+            id="addEventButton"
+            class="primary-button"
+        >
+            + Aggiungi Rientro / Vacanza
+        </button>
+
     </section>
 
-    <!-- ALTRO -->
+
+    <!-- =====================================================
+         ALTRO
+    ====================================================== -->
+
     <section id="otherPage" class="page">
+
         <header class="page-header">
             <h1>Altro</h1>
         </header>
+
+
         <div class="activity-card">
-            <div class="activity-card-title">Target Fine Tirocinio</div>
-            <div class="activity-card-info">15 Agosto 2027 (Margine di sicurezza esteso a 1 mese pieno).</div>
+
+            <div class="activity-card-title">
+                Fine percorso tirocinio
+            </div>
+
+            <div
+                id="deadlineInfo"
+                class="activity-card-info"
+            >
+                --
+            </div>
+
         </div>
-        <div class="activity-card" style="margin-top: 10px;">
-            <div class="activity-card-title">Stato Algoritmo Adattivo</div>
-            <div class="activity-card-info" id="adaptiveStatus">In calcolo sulle tue abitudini di studio e parametri universitari...</div>
+
+
+        <div class="activity-card">
+
+            <div class="activity-card-title">
+                Esame finale tirocinio
+            </div>
+
+            <div
+                id="finalExamInfo"
+                class="activity-card-info"
+            >
+                --
+            </div>
+
         </div>
-        <div class="section-title">Storico Registro Ore</div>
-        <div id="activitiesList" class="activities-list"></div>
+
+
+        <div class="activity-card">
+
+            <div class="activity-card-title">
+                Stato algoritmo
+            </div>
+
+            <div
+                id="adaptiveStatus"
+                class="activity-card-info"
+            >
+                --
+            </div>
+
+        </div>
+
+
+        <div class="section-title">
+            Impostazioni percorso
+        </div>
+
+        <div class="settings-card">
+
+            <label>
+                Data esame finale tirocinio
+
+                <input
+                    type="date"
+                    id="finalExamDate"
+                >
+            </label>
+
+            <label>
+                Giorni di preparazione prima dell'esame
+
+                <input
+                    type="number"
+                    id="finalExamBuffer"
+                    min="0"
+                    max="90"
+                    step="1"
+                >
+            </label>
+
+            <button
+                id="saveSettings"
+                class="primary-button"
+            >
+                Salva impostazioni
+            </button>
+
+        </div>
+
+
+        <div class="section-title">
+            Storico Registro Ore
+        </div>
+
+        <div
+            id="activitiesList"
+            class="activities-list"
+        ></div>
+
     </section>
 
-    <!-- NAVIGAZIONE -->
+
+    <!-- =====================================================
+         NAVIGAZIONE
+    ====================================================== -->
+
     <nav class="bottom-nav">
-        <button class="nav-button active" data-page="homePage">
+
+        <button
+            class="nav-button active"
+            data-page="homePage"
+        >
             <span>⌂</span>
             <small>Home</small>
         </button>
-        <button class="nav-button" data-page="calendarViewPage">
+
+        <button
+            class="nav-button"
+            data-page="calendarViewPage"
+        >
             <span>📅</span>
             <small>Calendario</small>
         </button>
-        <button class="nav-button" data-page="calendarPage">
+
+        <button
+            class="nav-button"
+            data-page="calendarPage"
+        >
             <span>🎓</span>
             <small>Libretto</small>
         </button>
-        <button class="nav-button" data-page="otherPage">
+
+        <button
+            class="nav-button"
+            data-page="otherPage"
+        >
             <span>⋯</span>
             <small>Altro</small>
         </button>
+
     </nav>
 
 </main>
 
-<!-- MODALE AGGIUNTA ATTIVITÀ -->
-<div id="activityModal" class="modal hidden">
+
+<!-- =========================================================
+     MODALE ATTIVITÀ
+========================================================== -->
+
+<div
+    id="activityModal"
+    class="modal hidden"
+>
+
     <div class="modal-content">
-        <h2>Aggiungi attività</h2>
+
+        <h2>Registra attività</h2>
+
         <div class="activity-type">
-            <button class="type-button selected" data-type="internship">Tirocinio</button>
-            <button class="type-button" data-type="study">Studio</button>
+
+            <button
+                class="type-button selected"
+                data-type="internship"
+            >
+                Tirocinio
+            </button>
+
+            <button
+                class="type-button"
+                data-type="study"
+            >
+                Studio
+            </button>
+
         </div>
+
+
         <label>
             Data
-            <input type="date" id="activityDate">
+
+            <input
+                type="date"
+                id="activityDate"
+            >
         </label>
+
+
         <label>
             Ore
-            <input type="number" id="activityHours" min="0.5" step="0.5" placeholder="Es. 6">
+
+            <input
+                type="number"
+                id="activityHours"
+                min="0.5"
+                max="8"
+                step="0.5"
+                placeholder="Es. 6"
+            >
         </label>
+
+
+        <label id="studyExamContainer">
+
+            Esame associato allo studio
+
+            <select id="studyExam">
+                <option value="">
+                    Studio generale
+                </option>
+            </select>
+
+        </label>
+
+
         <div class="modal-buttons">
-            <button id="closeModal" class="secondary-button">Annulla</button>
-            <button id="saveActivity" class="primary-button">Salva</button>
+
+            <button
+                id="closeModal"
+                class="secondary-button"
+            >
+                Annulla
+            </button>
+
+            <button
+                id="saveActivity"
+                class="primary-button"
+            >
+                Salva
+            </button>
+
         </div>
+
     </div>
+
 </div>
 
-<!-- MODALE ESAMI & CFU -->
-<div id="examModal" class="modal hidden">
+
+<!-- =========================================================
+     MODALE ESAME
+========================================================== -->
+
+<div
+    id="examModal"
+    class="modal hidden"
+>
+
     <div class="modal-content">
-        <h2>Esame / Materia</h2>
+
+        <h2 id="examModalTitle">
+            Esame / Materia
+        </h2>
+
+
         <label>
             Materia / Nome
-            <input type="text" id="examTitle" placeholder="Es. Ortodonzia">
+
+            <input
+                type="text"
+                id="examTitle"
+                placeholder="Es. Disturbi della voce"
+            >
         </label>
+
+
         <label>
             Valore CFU
-            <input type="number" id="examCFU" placeholder="Es. 6" min="1">
+
+            <input
+                type="number"
+                id="examCFU"
+                min="1"
+                step="1"
+                placeholder="Es. 6"
+            >
         </label>
+
+
         <label>
             Data Esame
-            <input type="date" id="examDate">
+
+            <input
+                type="date"
+                id="examDate"
+            >
         </label>
+
+
+        <label>
+            Ore di studio stimate
+
+            <input
+                type="number"
+                id="examStudyHours"
+                min="0"
+                step="0.5"
+                placeholder="Es. 45"
+            >
+        </label>
+
+
         <label>
             Stato Esame
+
             <select id="examStatus">
-                <option value="planned">In Programma</option>
-                <option value="passed">Superato</option>
+
+                <option value="planned">
+                    In Programma
+                </option>
+
+                <option value="passed">
+                    Superato
+                </option>
+
             </select>
+
         </label>
-        <label id="gradeContainer" style="display: none;">
+
+
+        <label
+            id="gradeContainer"
+            style="display:none;"
+        >
             Voto Conseguito
-            <input type="number" id="examGrade" placeholder="Es. 28" min="18" max="30">
+
+            <input
+                type="number"
+                id="examGrade"
+                min="18"
+                max="30"
+                step="1"
+                placeholder="Es. 28"
+            >
         </label>
+
+
         <div class="modal-buttons">
-            <button id="closeExamModal" class="secondary-button">Annulla</button>
-            <button id="saveExam" class="primary-button">Salva</button>
+
+            <button
+                id="closeExamModal"
+                class="secondary-button"
+            >
+                Annulla
+            </button>
+
+            <button
+                id="saveExam"
+                class="primary-button"
+            >
+                Salva
+            </button>
+
         </div>
+
     </div>
+
 </div>
 
-<!-- MODALE VACANZE / RIENTRI -->
-<div id="eventModal" class="modal hidden">
+
+<!-- =========================================================
+     MODALE EVENTO
+========================================================== -->
+
+<div
+    id="eventModal"
+    class="modal hidden"
+>
+
     <div class="modal-content">
+
         <h2>Rientro / Vacanza</h2>
+
+
         <div class="activity-type">
-            <button class="event-type-btn type-button selected" data-eventtype="home">Rientro</button>
-            <button class="event-type-btn type-button" data-eventtype="vacation">Vacanza</button>
+
+            <button
+                class="event-type-btn type-button selected"
+                data-eventtype="home"
+            >
+                Rientro
+            </button>
+
+            <button
+                class="event-type-btn type-button"
+                data-eventtype="vacation"
+            >
+                Vacanza
+            </button>
+
         </div>
+
+
         <label>
             Data Inizio
-            <input type="date" id="eventStartDate">
+
+            <input
+                type="date"
+                id="eventStartDate"
+            >
         </label>
+
+
         <label>
             Data Fine
-            <input type="date" id="eventEndDate">
+
+            <input
+                type="date"
+                id="eventEndDate"
+            >
         </label>
+
+
         <div class="modal-buttons">
-            <button id="closeEventModal" class="secondary-button">Annulla</button>
-            <button id="saveEvent" class="primary-button">Salva</button>
+
+            <button
+                id="closeEventModal"
+                class="secondary-button"
+            >
+                Annulla
+            </button>
+
+            <button
+                id="saveEvent"
+                class="primary-button"
+            >
+                Salva
+            </button>
+
         </div>
+
     </div>
+
 </div>
 
+
 <script src="app.js"></script>
+
 </body>
 </html>
