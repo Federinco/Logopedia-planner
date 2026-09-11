@@ -503,4 +503,6 @@ document.addEventListener("DOMContentLoaded", () => {
     calculateWeightedAverage();
     updateRings();
     renderCalendar();
-});
+});git add .
+git commit -m "Fix definitivo salvataggio attivita e modali in app.js"
+git push origin main
