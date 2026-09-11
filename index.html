@@ -151,7 +151,6 @@
 
         </div>
 
-        <!-- Pulsante principale per aggiungere attività ben posizionato in Home -->
         <div style="padding: 20px; text-align: center;">
             <button id="addActivityButton" class="primary-button" style="width: 100%; padding: 14px; font-size: 16px;">
                 + Aggiungi Attività (Tirocinio / Studio)
@@ -196,7 +195,7 @@
         <header class="page-header">
             <h1>Libretto & Laurea</h1>
         </header>
-<!-- Griglia Statistiche Classica (2 elementi) -->
+
         <div class="stats-grid">
             <div class="stat-card">
                 <div id="weightedAverage" class="stat-value">--</div>
@@ -208,7 +207,6 @@
             </div>
         </div>
 
-        <!-- SIMULATORE VOTO DI LAUREA & STIMA DATA -->
         <div class="settings-card">
             <div class="activity-card-title" style="margin-bottom: 10px;">Simulatore Voto di Laurea</div>
             <p class="activity-card-info" style="margin-bottom: 6px;">Base di partenza (su 110): <strong id="laureaBaseVal" style="color:#fff;">0.00</strong></p>
@@ -220,10 +218,10 @@
             <div style="margin-top: 10px; font-size: 15px; font-weight: 600; color: #30d158;">
                 Proiezione Finale: <span id="laureaFinalVal">0.00</span> / 110
             </div>
-        </div>        <!-- TIMER STUDIO POMODORO MODIFICABILE -->
+        </div>
+
         <div class="settings-card" style="text-align: center;">
             <div class="activity-card-title" style="margin-bottom: 5px;">Timer Studio & Pomodoro</div>
-            
             <div style="margin: 10px 0; display: flex; justify-content: center; align-items: center; gap: 10px;">
                 <div id="timerDisplay" style="font-size: 2.2rem; font-weight: bold; color: #fff; cursor: pointer;" title="Clicca per impostare i minuti">25:00</div>
             </div>
@@ -232,7 +230,6 @@
                     <input type="number" id="timerMinutesInput" value="25" min="1" max="180" style="width: 80px; display: inline-block; margin-left: 6px; padding: 6px; border-radius: 8px; background: #2c2c2e; color: #fff; border: none; text-align: center;">
                 </label>
             </div>
-
             <div style="display: flex; gap: 8px; margin-bottom: 10px;">
                 <button id="timerStartBtn" class="primary-button" style="padding: 10px; font-size: 14px;">Avvia</button>
                 <button id="timerFreeBtn" class="secondary-button" style="padding: 10px; font-size: 14px; background:#2c2c2e;">Libero</button>
@@ -273,7 +270,6 @@
             <h1>Altro</h1>
         </header>
 
-        <!-- DIARIO CLINICO ANONIMIZZATO -->
         <div class="settings-card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                 <div class="activity-card-title">Diario Clinico</div>
@@ -283,7 +279,6 @@
             <div id="clinicList" class="activities-list" style="max-height: 200px; overflow-y: auto; margin-bottom:0;"></div>
         </div>
 
-        <!-- BACKUP & RIPRISTINO JSON -->
         <div class="settings-card">
             <div class="activity-card-title" style="margin-bottom: 10px;">Backup e Ripristino Dati</div>
             <button id="exportJsonBtn" class="primary-button" style="margin-bottom: 8px; font-size: 14px; padding: 12px;">Scarica Backup (JSON)</button>
@@ -324,8 +319,37 @@
             </button>
         </div>
 
-        <div class="section-title">Storico Registro Ore</div>
-        <div id="activitiesList" class="activities-list"></div>
+        <!-- STORICO E GRAFICO ATTIVITÀ -->
+        <div class="settings-card">
+            <div class="activity-card-title" style="margin-bottom: 15px; text-align: center;">Storico e Grafico Attività</div>
+            
+            <!-- Barra di navigazione settimane con frecce ai lati -->
+            <div style="display: flex; align-items: center; justify-content: space-between; background: #2c2c2e; padding: 10px 15px; border-radius: 12px; margin-bottom: 12px;">
+                <button id="prevWeekBtn" style="background: none; border: none; color: #fff; font-size: 16px; cursor: pointer; padding: 4px 10px;">&#9664;</button>
+                <div id="weekRangeLabel" style="font-size: 14px; font-weight: 600; color: #fff;">Questa settimana</div>
+                <button id="nextWeekBtn" style="background: none; border: none; color: #fff; font-size: 16px; cursor: pointer; padding: 4px 10px;">&#9654;</button>
+            </div>
+
+            <!-- Selettore dell'indicatore (Studio / Tirocinio) -->
+            <div style="margin-bottom: 15px;">
+                <select id="weeklyMetricSelect" style="width: 100%; padding: 12px; border-radius: 10px; background: #2c2c2e; color: #fff; border: none; font-size: 14px; font-weight: 500; cursor: pointer;">
+                    <option value="study">Studio Settimanale</option>
+                    <option value="internship">Tirocinio Settimanale</option>
+                </select>
+            </div>
+
+            <!-- Grande cerchio centrale solido -->
+            <div style="text-align: center; position: relative; width: 160px; height: 160px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <svg width="160" height="160" viewBox="0 0 100 100" style="position: absolute; top: 0; left: 0; transform: rotate(-90deg);">
+                    <circle cx="50" cy="50" r="40" stroke="#2c2c2e" stroke-width="8" fill="none"></circle>
+                    <circle id="singleWeekCircle" cx="50" cy="50" r="40" stroke="#30d158" stroke-width="8" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" style="transition: stroke-dashoffset 0.4s ease;"></circle>
+                </svg>
+                <div style="z-index: 1; display: flex; flex-direction: column; align-items: center;">
+                    <span id="singleWeekMainVal" style="font-size: 26px; font-weight: bold; color: #fff; line-height: 1.1;">0</span>
+                    <span id="singleWeekSubVal" style="font-size: 12px; color: #8e8e93; margin-top: 2px;">/ 25 ore</span>
+                </div>
+            </div>
+        </div>
 
     </section>
 
@@ -357,14 +381,13 @@
 
 
 <!-- =========================================================
-     MODALE ATTIVITÀ (CON PULSANTI STATO CHIARO/SCURO E CAMPI INTEGRATI)
+     MODALE ATTIVITÀ
 ========================================================== -->
 <div id="activityModal" class="modal hidden" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;">
     <div class="modal-content" style="background: #1c1c1e; padding: 20px; border-radius: 14px; width: 90%; max-width: 400px; color: #fff; position: relative; max-height: 90vh; overflow-y: auto;">
         
         <h2>Nuova Attività</h2>
         
-        <!-- Selezione Tipo Attività (Tirocinio / Studio con contrasto chiaro/scuro netto) -->
         <div class="activity-type" style="display: flex; gap: 10px; margin-bottom: 15px;">
             <button type="button" class="type-button selected" data-type="internship" style="flex: 1; padding: 12px; border-radius: 8px; border: none; background: #3a3a3c; color: #fff; font-weight: bold; cursor: pointer; transition: background 0.2s;">Tirocinio</button>
             <button type="button" class="type-button" data-type="study" style="flex: 1; padding: 12px; border-radius: 8px; border: none; background: #1c1c1e; color: #8e8e93; border: 1px solid #3a3a3c; cursor: pointer; transition: background 0.2s;">Studio</button>
@@ -380,14 +403,12 @@
             <input type="number" id="activityHours" min="0.5" step="0.5" placeholder="Es. 4" style="width: 100%; margin-top: 6px; padding: 10px; border-radius: 8px; background: #2c2c2e; color: #fff; border: none;">
         </label>
 
-        <!-- Contenitore Esame Associato (per lo studio) -->
         <div id="studyExamContainer" style="margin-bottom: 10px; display: none;">
             <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #8e8e93;">Materia / Esame associato</label>
             <input type="text" id="studyExam" list="savedStudyExams" placeholder="Es. Audiologia, Neurologia..." style="width: 100%; padding: 10px; border-radius: 8px; border: none; background: #2c2c2e; color: #fff; font-size: 14px;">
             <datalist id="savedStudyExams"></datalist>
         </div>
 
-        <!-- Contenitore Argomento (per lo studio) -->
         <div id="studyTitleContainer" style="margin-bottom: 15px; display: none;">
             <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #8e8e93;">Argomento o Specificifica</label>
             <input type="text" id="activityTitleInput" list="savedStudyTitles" placeholder="Es. Logopedia infantile, Fonetica..." style="width: 100%; padding: 10px; border-radius: 8px; border: none; background: #2c2c2e; color: #fff; font-size: 14px;">
