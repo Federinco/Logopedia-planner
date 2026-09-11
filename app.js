@@ -29,8 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
             
             if (targetPage === "calendarViewPage") {
                 renderCalendar();
-            } else if (targetPage === "historyPage") {
-                renderHistory();
             }
         });
     });
@@ -157,113 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 dot.setAttribute("cy", cy);
             }
         }
-    }
-
-    // ---------------------------------------------------------
-    // STORICO E GRAFICI (SCHEDA ALTRO)
-    // ---------------------------------------------------------
-    let historyWeekOffset = 0;
-
-    function renderHistory() {
-        const weekLabel = document.getElementById("weekLabel");
-        const indicatorSelect = document.getElementById("indicatorSelect");
-        const ring = document.getElementById("historyProgressRing");
-        const valSpan = document.getElementById("historyRingValue");
-        const maxSpan = document.getElementById("historyRingMax");
-        const chartTitle = document.getElementById("chartTitle");
-        const descEl = document.getElementById("historyDescription");
-
-        if (!ring || !indicatorSelect) return;
-
-        const now = new Date();
-        const dayOfWeek = now.getDay() || 7;
-        const monday = new Date(now);
-        monday.setDate(now.getDate() - dayOfWeek + 1 + (historyWeekOffset * 7));
-        monday.setHours(0, 0, 0, 0);
-
-        const sunday = new Date(monday);
-        sunday.setDate(monday.getDate() + 6);
-        sunday.setHours(23, 59, 59, 999);
-
-        const formatDateStr = (d) => `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
-        if (weekLabel) {
-            weekLabel.textContent = historyWeekOffset === 0 ? "Questa settimana" : `${formatDateStr(monday)} - ${formatDateStr(sunday)}`;
-        }
-
-        let totalInternshipDone = 645;
-        let weeklyInternshipDone = 0;
-        let weeklyStudyDone = 0;
-
-        state.activities.forEach(act => {
-            const actDate = new Date(act.date);
-            if (act.type === 'internship') {
-                totalInternshipDone += parseFloat(act.hours) || 0;
-                if (actDate >= monday && actDate <= sunday) {
-                    weeklyInternshipDone += parseFloat(act.hours) || 0;
-                }
-            } else if (act.type === 'study') {
-                if (actDate >= monday && actDate <= sunday) {
-                    weeklyStudyDone += parseFloat(act.hours) || 0;
-                }
-            }
-        });
-
-        const selectedIndicator = indicatorSelect.value;
-        const length = 1005;
-        let current = 0;
-        let max = 1500;
-        let color = "#ff9f0a";
-
-        if (selectedIndicator === "internshipTotal") {
-            current = totalInternshipDone;
-            max = 1500;
-            color = "#ff9f0a";
-            if (chartTitle) chartTitle.textContent = "Tirocinio Totale (Progresso Globale)";
-            if (maxSpan) maxSpan.textContent = "/ 1500 ore";
-            if (descEl) descEl.textContent = "Ore accumulate complessivamente nel percorso di tirocinio.";
-        } else if (selectedIndicator === "weeklyInternship") {
-            current = weeklyInternshipDone;
-            max = 35;
-            color = "#ff9f0a";
-            if (chartTitle) chartTitle.textContent = "Tirocinio Settimanale";
-            if (maxSpan) maxSpan.textContent = "/ 35 ore";
-            if (descEl) descEl.textContent = "Ore di tirocinio svolte nella settimana selezionata.";
-        } else if (selectedIndicator === "weeklyStudy") {
-            current = weeklyStudyDone;
-            max = 25;
-            color = "#32d74b";
-            if (chartTitle) chartTitle.textContent = "Studio Settimanale";
-            if (maxSpan) maxSpan.textContent = "/ 25 ore";
-            if (descEl) descEl.textContent = "Ore dedicate allo studio nella settimana selezionata.";
-        }
-
-        if (valSpan) valSpan.textContent = current;
-        ring.style.stroke = color;
-
-        const percent = Math.min(1, Math.max(0, current / max));
-        ring.style.strokeDashoffset = length * (1 - percent);
-    }
-
-    const prevWeekBtn = document.getElementById("prevWeekBtn");
-    const nextWeekBtn = document.getElementById("nextWeekBtn");
-    const indicatorSelect = document.getElementById("indicatorSelect");
-
-    if (prevWeekBtn) {
-        prevWeekBtn.addEventListener("click", () => {
-            historyWeekOffset--;
-            renderHistory();
-        });
-    }
-    if (nextWeekBtn) {
-        nextWeekBtn.addEventListener("click", () => {
-            historyWeekOffset++;
-            renderHistory();
-        });
-    }
-    if (indicatorSelect) {
-        indicatorSelect.addEventListener("change", () => {
-            renderHistory();
-        });
     }
 
     // ---------------------------------------------------------
@@ -427,14 +318,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const confirmCancelBtn = document.getElementById("confirmCancelBtn");
         
         if (!confirmModal) {
-            if (!window.confirm("Sei sicuro di voler eliminare questo elemento?")) return;
+            // Fallback di sicurezza se per caso non c'è il modale HTML
+            if (!confirm("Sei sicuro di voler eliminare questo elemento?")) return;
             executeDelete(type, id);
             return;
         }
 
+        // Mostra il modale custom
         confirmModal.classList.remove("hidden");
         confirmModal.style.display = "flex";
 
+        // Pulizia eventi precedenti per evitare duplicazioni di click
         const newOkBtn = confirmOkBtn.cloneNode(true);
         const newCancelBtn = confirmCancelBtn.cloneNode(true);
         confirmOkBtn.parentNode.replaceChild(newOkBtn, confirmOkBtn);
@@ -502,6 +396,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // ---------------------------------------------------------
+    // TITOLI STUDIO & MATERIE LIBERE CON DATALIST
+    // ---------------------------------------------------------
     function populateStudyTitlesList() {
         const datalist = document.getElementById("savedStudyTitles");
         if (!datalist) return;
@@ -562,6 +459,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // GESTIONE CORRETTA DEI BOTTONI TIPO ATTIVITÀ (COLORE E CLASSE SELECTED)
     typeButtons.forEach(btn => {
         if (!btn.getAttribute("data-type")) {
             btn.setAttribute("data-type", btn.textContent.toLowerCase().includes("studio") ? "study" : "internship");
@@ -570,6 +468,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", (e) => {
             typeButtons.forEach(b => {
                 b.classList.remove("selected");
+                // Reset colori inline per forzare lo stato non selezionato
                 b.style.background = "";
                 b.style.color = "";
             });
@@ -577,6 +476,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const currentBtn = e.currentTarget;
             currentBtn.classList.add("selected");
             
+            // Forza visivamente lo sfondo chiaro sul bottone selezionato e scuro sull'altro se necessario
             typeButtons.forEach(b => {
                 if (b.classList.contains("selected")) {
                     b.style.background = "#3a3a3c";
@@ -591,6 +491,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Imposta lo stato iniziale del primo bottone (Tirocinio) come selezionato di default all'avvio
     if (typeButtons.length > 0) {
         typeButtons[0].classList.add("selected");
         typeButtons[0].style.background = "#3a3a3c";
@@ -603,6 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(checkActivityTypeVisibility, 50);
 
+    // Salvataggio Attività
     const saveActivityBtn = document.getElementById("saveActivity");
     if (saveActivityBtn) {
         saveActivityBtn.addEventListener("click", () => {
@@ -646,6 +548,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Salvataggio Esame
     const saveExamBtn = document.getElementById("saveExam");
     if (saveExamBtn) {
         saveExamBtn.addEventListener("click", () => {
@@ -677,6 +580,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Simulatore Laurea
     const rangeInput = document.getElementById("laureaBonusRange");
     const bonusValSpan = document.getElementById("laureaBonusVal");
     const baseValSpan = document.getElementById("laureaBaseVal");
@@ -685,11 +589,21 @@ document.addEventListener("DOMContentLoaded", () => {
     function calculateWeightedAverage() {
         let totalPoints = 0;
         let totalCFU = 0;
+        let passedExamsCount = 0;
+        let firstExamDate = null;
+        let lastPassedDate = null;
 
         state.exams.forEach(exam => {
             if (exam.status === "passed" && exam.grade) {
                 totalPoints += parseFloat(exam.grade) * parseFloat(exam.cfu);
                 totalCFU += parseFloat(exam.cfu);
+                passedExamsCount++;
+
+                if (exam.date) {
+                    const d = new Date(exam.date);
+                    if (!firstExamDate || d < firstExamDate) firstExamDate = d;
+                    if (!lastPassedDate || d > lastPassedDate) lastPassedDate = d;
+                }
             }
         });
 
@@ -707,8 +621,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const final = base > 0 ? Math.min(110, base + bonus) : 0;
         if (finalValSpan) finalValSpan.textContent = final.toFixed(2);
-    }
 
+        // --- STIMA DATA LAUREA ---
+        const projDateEl = document.getElementById("projectedGraduationDate");
+        if (projDateEl) {
+            const TOTAL_DEGREE_CFU = 180;
+            let validExamsWithDate = 0;
+
+            state.exams.forEach(exam => {
+                if (exam.status === "passed" && exam.grade && exam.date) {
+                    validExamsWithDate++;
+                }
+            });
+
+            const remainingCFU = Math.max(0, TOTAL_DEGREE_CFU - totalCFU);
+
+            if (validExamsWithDate >= 2 && firstExamDate && lastPassedDate && lastPassedDate > firstExamDate) {
+                const totalDaysPassed = (lastPassedDate - firstExamDate) / (1000 * 60 * 60 * 24);
+                const cfuPerDay = totalCFU / totalDaysPassed;
+
+                if (cfuPerDay > 0) {
+                    const daysNeeded = remainingCFU / cfuPerDay;
+                    const projectedDate = new Date();
+                    projectedDate.setDate(projectedDate.getDate() + daysNeeded);
+
+                    projDateEl.textContent = projectedDate.toLocaleDateString('it-IT', { month: 'short', year: 'numeric' });
+                } else {
+                    projDateEl.textContent = "In calcolo...";
+                }
+            } else {
+                projDateEl.textContent = "Dati insufficienti";
+            }
+        }
+    }
     if (rangeInput) {
         rangeInput.addEventListener("input", () => {
             if (bonusValSpan) bonusValSpan.textContent = rangeInput.value;
