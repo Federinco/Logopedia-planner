@@ -151,6 +151,13 @@
 
         </div>
 
+        <!-- Pulsante principale per aggiungere attività ben posizionato in Home -->
+        <div style="padding: 20px; text-align: center;">
+            <button id="addActivityButton" class="primary-button" style="width: 100%; padding: 14px; font-size: 16px;">
+                + Aggiungi Attività (Tirocinio / Studio)
+            </button>
+        </div>
+
     </section>
 
 
@@ -158,35 +165,26 @@
          CALENDARIO
     ====================================================== -->
 
-    <section id="calendarViewPage" class="page">
-
-        <header class="page-header">
-            <h1>Calendario</h1>
-        </header>
-
-        <div class="calendar-controls">
-            <button id="prevMonthBtn">&lt;</button>
-            <h2 id="calendarMonthLabel">Mese Anno</h2>
-            <button id="nextMonthBtn">&gt;</button>
+    <div id="calendarViewPage" class="page">
+        <div class="calendar-nav-container" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; padding: 0 10px;">
+            <button id="prevMonthBtn" class="month-nav-btn" style="background: rgba(255,255,255,0.1); border: none; color: #fff; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 16px;">&lt;</button>
+            <h2 id="calendarMonthLabel" style="margin: 0; font-size: 18px; font-weight: 600; text-align: center;">Mese Anno</h2>
+            <button id="nextMonthBtn" class="month-nav-btn" style="background: rgba(255,255,255,0.1); border: none; color: #fff; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 16px;">&gt;</button>
         </div>
-
-        <div class="calendar-grid calendar-head">
-            <div class="calendar-day-head">Lun</div>
-            <div class="calendar-day-head">Mar</div>
-            <div class="calendar-day-head">Mer</div>
-            <div class="calendar-day-head">Gio</div>
-            <div class="calendar-day-head">Ven</div>
-            <div class="calendar-day-head">Sab</div>
-            <div class="calendar-day-head">Dom</div>
-        </div>
-
         <div id="calendarGrid" class="calendar-grid"></div>
+    </div>
 
-        <button id="addActivityButton" class="primary-button">
-            + Registra Ore / Attività
-        </button>
-
-    </section>
+    <!-- Modale Dettaglio Giorno -->
+    <div id="dayDetailModal" class="modal hidden" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;">
+        <div class="modal-content" style="background: #1c1c1e; padding: 20px; border-radius: 14px; width: 90%; max-width: 400px; color: #fff; position: relative;">
+            <h3 id="dayDetailTitle" style="margin-top: 0;">Dettaglio Giorno</h3>
+            <div id="dayDetailContent" style="max-height: 300px; overflow-y: auto; margin: 15px 0;"></div>
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button id="addActivityFromDetail" style="background: #0a84ff; color: #fff; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer;">Aggiungi Attività</button>
+                <button id="closeDayDetailModal" style="background: #3a3a3c; color: #fff; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer;">Chiudi</button>
+            </div>
+        </div>
+    </div>
 
 
     <!-- =====================================================
@@ -227,7 +225,6 @@
         <div class="settings-card" style="text-align: center;">
             <div class="activity-card-title" style="margin-bottom: 5px;">Timer Studio & Pomodoro</div>
             
-            <!-- Display del timer e input minuti rapido integrati -->
             <div style="margin: 10px 0; display: flex; justify-content: center; align-items: center; gap: 10px;">
                 <div id="timerDisplay" style="font-size: 2.2rem; font-weight: bold; color: #fff; cursor: pointer;" title="Clicca per impostare i minuti">25:00</div>
             </div>
@@ -361,25 +358,48 @@
 
 
 <!-- =========================================================
-     MODALE ATTIVITÀ
+     MODALE ATTIVITÀ (CON PULSANTI STATO CHIARO/SCURO E CAMPI INTEGRATI)
 ========================================================== -->
-<div id="activityModal" class="modal hidden">
-    <div class="modal-content">
-        <h2>Registra attività</h2>
-        <div class="activity-type">
-            <button class="type-button selected" data-type="internship">Tirocinio</button>
-            <button class="type-button" data-type="study">Studio</button>
+<div id="activityModal" class="modal hidden" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;">
+    <div class="modal-content" style="background: #1c1c1e; padding: 20px; border-radius: 14px; width: 90%; max-width: 400px; color: #fff; position: relative; max-height: 90vh; overflow-y: auto;">
+        
+        <h2>Nuova Attività</h2>
+        
+        <!-- Selezione Tipo Attività (Tirocinio / Studio con contrasto chiaro/scuro netto) -->
+        <div class="activity-type" style="display: flex; gap: 10px; margin-bottom: 15px;">
+            <button type="button" class="type-button selected" data-type="internship" style="flex: 1; padding: 12px; border-radius: 8px; border: none; background: #3a3a3c; color: #fff; font-weight: bold; cursor: pointer; transition: background 0.2s;">Tirocinio</button>
+            <button type="button" class="type-button" data-type="study" style="flex: 1; padding: 12px; border-radius: 8px; border: none; background: #1c1c1e; color: #8e8e93; border: 1px solid #3a3a3c; cursor: pointer; transition: background 0.2s;">Studio</button>
         </div>
-        <label>Data<input type="date" id="activityDate"></label>
-        <label>Ore<input type="number" id="activityHours" min="0.5" max="8" step="0.5" placeholder="Es. 6"></label>
-        <label id="studyExamContainer">
-            Esame associato allo studio
-            <select id="studyExam"><option value="">Studio generale</option></select>
+
+        <label style="display: block; margin-bottom: 10px;">
+            Data
+            <input type="date" id="activityDate" style="width: 100%; margin-top: 6px; padding: 10px; border-radius: 8px; background: #2c2c2e; color: #fff; border: none;">
         </label>
-        <div class="modal-buttons">
-            <button id="closeModal" class="secondary-button">Annulla</button>
-            <button id="saveActivity" class="primary-button">Salva</button>
+
+        <label style="display: block; margin-bottom: 10px;">
+            Ore
+            <input type="number" id="activityHours" min="0.5" step="0.5" placeholder="Es. 4" style="width: 100%; margin-top: 6px; padding: 10px; border-radius: 8px; background: #2c2c2e; color: #fff; border: none;">
+        </label>
+
+        <!-- Contenitore Esame Associato (per lo studio) -->
+        <div id="studyExamContainer" style="margin-bottom: 10px; display: none;">
+            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #8e8e93;">Materia / Esame associato</label>
+            <input type="text" id="studyExam" list="savedStudyExams" placeholder="Es. Audiologia, Neurologia..." style="width: 100%; padding: 10px; border-radius: 8px; border: none; background: #2c2c2e; color: #fff; font-size: 14px;">
+            <datalist id="savedStudyExams"></datalist>
         </div>
+
+        <!-- Contenitore Argomento (per lo studio) -->
+        <div id="studyTitleContainer" style="margin-bottom: 15px; display: none;">
+            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #8e8e93;">Argomento o Specificifica</label>
+            <input type="text" id="activityTitleInput" list="savedStudyTitles" placeholder="Es. Logopedia infantile, Fonetica..." style="width: 100%; padding: 10px; border-radius: 8px; border: none; background: #2c2c2e; color: #fff; font-size: 14px;">
+            <datalist id="savedStudyTitles"></datalist>
+        </div>
+
+        <div class="modal-buttons" style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+            <button id="closeModal" class="secondary-button" style="background: #3a3a3c; color: #fff; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer;">Annulla</button>
+            <button id="saveActivity" class="primary-button" style="background: #0a84ff; color: #fff; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer;">Salva</button>
+        </div>
+
     </div>
 </div>
 
@@ -461,6 +481,16 @@
 </div>
 
 <script src="app.js"></script>
-
+<!-- Modale di Conferma Personalizzato -->
+<div id="confirmModal" class="modal hidden" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000;">
+    <div class="modal-content" style="background: #1c1c1e; padding: 20px; border-radius: 14px; width: 90%; max-width: 320px; text-align: center; border: 1px solid #3a3a3c; color: #fff;">
+        <h3 style="margin-bottom: 10px; font-size: 18px;">Conferma</h3>
+        <p id="confirmMessage" style="color: #8e8e93; font-size: 14px; margin-bottom: 20px;">Sei sicuro di voler eliminare questo elemento?</p>
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <button id="confirmCancelBtn" style="flex: 1; padding: 10px; border-radius: 8px; border: 1px solid #3a3a3c; background: #2c2c2e; color: #fff; cursor: pointer;">Annulla</button>
+            <button id="confirmOkBtn" style="flex: 1; padding: 10px; border-radius: 8px; border: none; background: #ff453a; color: #fff; cursor: pointer; font-weight: bold;">Elimina</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
