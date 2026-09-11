@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
             pages.forEach(pg => pg.classList.remove("active"));
 
             button.classList.add("active");
-            document.getElementById(targetPage).classList.add("active");
+            const targetEl = document.getElementById(targetPage);
+            if (targetEl) targetEl.classList.add("active");
             
             if (targetPage === "calendarViewPage") {
                 renderCalendar();
@@ -153,7 +154,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 const actDateInput = document.getElementById("activityDate");
                 if (actDateInput) actDateInput.value = dateStr;
                 const modal = document.getElementById("activityModal");
-                if (modal) modal.classList.remove("hidden");
+                if (modal) {
+                    modal.classList.remove("hidden");
+                    modal.style.display = "block";
+                }
             });
 
             daysContainer.appendChild(dayDiv);
@@ -310,7 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ---------------------------------------------------------
-    // 5. GESTIONE MODALI E SALVATAGGIO COMPLETO DATI
+    // 5. GESTIONE MODALI E SALVATAGGIO COMPLETO DATI (BLINDATO)
     // ---------------------------------------------------------
     function setupModal(openBtnId, modalId, closeBtnId) {
         const openBtn = document.getElementById(openBtnId);
@@ -318,10 +322,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const closeBtn = document.getElementById(closeBtnId);
 
         if (openBtn && modal) {
-            openBtn.addEventListener("click", () => modal.classList.remove("hidden"));
+            openBtn.addEventListener("click", () => {
+                modal.classList.remove("hidden");
+                modal.style.display = "block";
+            });
         }
         if (closeBtn && modal) {
-            closeBtn.addEventListener("click", () => modal.classList.add("hidden"));
+            closeBtn.addEventListener("click", () => {
+                modal.classList.add("hidden");
+                modal.style.display = "none";
+            });
         }
     }
 
@@ -331,37 +341,63 @@ document.addEventListener("DOMContentLoaded", () => {
     setupModal("addEventButton", "eventModal", "closeEventModal");
     setupModal("addClinicButton", "clinicModal", "closeClinicModal");
 
-    // Salvataggio Attività (Studio / Tirocinio)
-    const saveActivityBtn = document.getElementById("saveActivity");
+    // Selezione pulsanti tipo attività nel modale (supporta sia .selected che .active)
+    document.querySelectorAll(".activity-type .type-button").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            document.querySelectorAll(".activity-type .type-button").forEach(b => {
+                b.classList.remove("selected");
+                b.classList.remove("active");
+            });
+            e.target.classList.add("selected");
+            e.target.classList.add("active");
+        });
+    });
+
+    // Salvataggio Attività (Studio / Tirocinio) - Rende sicuro il recupero degli ID
+    const saveActivityBtn = document.getElementById("saveActivity") || document.getElementById("saveActivityButton");
     if (saveActivityBtn) {
         saveActivityBtn.addEventListener("click", () => {
-            const date = document.getElementById("activityDate").value;
-            const hours = document.getElementById("activityHours").value;
-            const activeTypeBtn = document.querySelector(".activity-type .type-button.selected");
-            const type = activeTypeBtn ? activeTypeBtn.getAttribute("data-type") : "internship";
+            const dateInput = document.getElementById("activityDate");
+            const hoursInput = document.getElementById("activityHours");
+            
+            const date = dateInput ? dateInput.value : "";
+            const hours = hoursInput ? hoursInput.value : "";
+            
+            let activeTypeBtn = document.querySelector(".activity-type .type-button.selected") || 
+                                document.querySelector(".activity-type .type-button.active") ||
+                                document.querySelector(".activity-type .type-button");
+            
+            const type = activeTypeBtn ? (activeTypeBtn.getAttribute("data-type") || "internship") : "internship";
 
             if (!date || !hours) {
-                alert("Inserisci data e ore valide.");
+                alert("Per favore, inserisci sia la data che il numero di ore.");
                 return;
             }
 
-            state.activities.push({ id: Date.now(), type, date, hours: parseFloat(hours) });
+            state.activities.push({ 
+                id: Date.now(), 
+                type: type, 
+                date: date, 
+                hours: parseFloat(hours) 
+            });
+
             localStorage.setItem("logopedia_activities", JSON.stringify(state.activities));
             
-            document.getElementById("activityModal").classList.add("hidden");
+            const modal = document.getElementById("activityModal");
+            if (modal) {
+                modal.classList.add("hidden");
+                modal.style.display = "none"; 
+            }
+
+            if (dateInput) dateInput.value = "";
+            if (hoursInput) hoursInput.value = "";
+
             updateRings();
             renderCalendar();
+            
             alert("Attività salvata con successo!");
         });
     }
-
-    // Selezione pulsanti tipo attività nel modale
-    document.querySelectorAll(".activity-type .type-button").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            document.querySelectorAll(".activity-type .type-button").forEach(b => b.classList.remove("selected"));
-            e.target.classList.add("selected");
-        });
-    });
 
     // Salvataggio Esame
     const saveExamBtn = document.getElementById("saveExam") || document.getElementById("saveExamButton");
@@ -389,7 +425,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             localStorage.setItem("logopedia_exams", JSON.stringify(state.exams));
             const examModal = document.getElementById("examModal");
-            if (examModal) examModal.classList.add("hidden");
+            if (examModal) {
+                examModal.classList.add("hidden");
+                examModal.style.display = "none";
+            }
 
             calculateWeightedAverage();
             renderCalendar();
@@ -419,7 +458,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             localStorage.setItem("logopedia_events", JSON.stringify(state.events));
             const eventModal = document.getElementById("eventModal");
-            if (eventModal) eventModal.classList.add("hidden");
+            if (eventModal) {
+                eventModal.classList.add("hidden");
+                eventModal.style.display = "none";
+            }
 
             renderCalendar();
             alert("Evento salvato con successo!");
@@ -448,7 +490,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             localStorage.setItem("logopedia_clinic", JSON.stringify(state.clinic));
             const clinicModal = document.getElementById("clinicModal");
-            if (clinicModal) clinicModal.classList.add("hidden");
+            if (clinicModal) {
+                clinicModal.classList.add("hidden");
+                clinicModal.style.display = "none";
+            }
 
             alert("Tirocinio clinico salvato con successo!");
         });
